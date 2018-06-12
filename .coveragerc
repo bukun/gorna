@@ -1,0 +1,3 @@
+[run]
+source = gorna
+omit = gorna/test*
