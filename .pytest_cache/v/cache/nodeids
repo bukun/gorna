@@ -1,0 +1,6 @@
+[
+  "pyramid_demo/tuto03/view_classes/tutorial/tests.py::TutorialViewTests::test_hello",
+  "pyramid_demo/tuto03/view_classes/tutorial/tests.py::TutorialViewTests::test_home",
+  "pyramid_demo/tuto03/view_classes/tutorial/tests.py::TutorialFunctionalTests::test_hello",
+  "pyramid_demo/tuto03/view_classes/tutorial/tests.py::TutorialFunctionalTests::test_home"
+]

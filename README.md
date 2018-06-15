@@ -28,3 +28,8 @@ ZODB for persistent storage, traversal for routing, and Chameleon for templating
     initialize_gorna_db development.ini
 
     pserve development.ini
+
+开发环境中， 可以运行下面命令，修改过程可以自动加载重启：
+
+    source ~/vpy_gorna/bin/activate
+    pserve development.ini --reload

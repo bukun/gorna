@@ -6,33 +6,7 @@ from sqlalchemy.exc import DBAPIError
 
 from ..models import MyModel
 
-
-# One route, at /howdy/amy, so don't repeat on each @view_config
-@view_defaults(route_name='hello')
-class HelloWorldViews:
-    def __init__(self, request):
-        self.request = request
-        # Our templates can now say {{ view.name }}
-        self.name = request.matchdict['name']
-
-    # Retrieving /howdy/amy the first time
-    @view_config(renderer='hello.jinja2')
-    def hello_view(self):
-        return dict()
-
-    # Posting to /howdy/amy via the "Edit" submit button
-    @view_config(request_param='form.edit', renderer='edit.jinja2')
-    def edit_view(self):
-        print('Edited')
-        return dict()
-
-    # Posting to /howdy/amy via the "Delete" submit button
-    @view_config(request_param='form.delete', renderer='delete.jinja2')
-    def delete_view(self):
-        print('Deleted')
-        return dict()
-
-@view_config(route_name='home', renderer='../templates/mytemplate.jinja2')
+@view_config(route_name='datable', renderer='../templates/datable.jinja2')
 def my_view(request):
     print('=' * 40)
     print(request.params)
@@ -41,6 +15,7 @@ def my_view(request):
         one = query.filter(MyModel.name == 'one').first()
     except DBAPIError:
         return Response(db_err_msg, content_type='text/plain', status=500)
+
     return {'one': one, 'project': 'gorna'}
 
 
