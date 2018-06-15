@@ -6,7 +6,8 @@
         输入一组范围：
     </p>
     <table border="0" cellspacing="5" cellpadding="5">
-        <tbody><tr>
+        <tbody>
+        <tr>
             <td>最小贝类养殖面积:</td>
             <td><input type="text" id="min" name="min"></td>
         </tr>
@@ -20,75 +21,25 @@
     <table id="example" class="display" style="width:100%">
         <thead>
 
-            {% for title in titles %}
+        {% for title in titles %}
 
-                <tr>
-                    {% for item in title %}
-                        <td>{{ item }}</td>
-                     {% endfor %}
-                </tr>
-            {% endfor %}
+            <tr>
+                {% for item in title %}
+                    <td>{{ item }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
         </thead>
         <tbody>
-            {% for value in values %}
-                <tr>
-                    {% for item in value %}
-                        <td>{{ item }}</td>
-                     {% endfor %}
-                </tr>
-            {% endfor %}
+        {% for value in values %}
+            <tr>
+                {% for item in value %}
+                    <td>{{ item }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
 
 
-    <!--
-    <table id="example" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Airi Satou</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>33</td>
-                <td>2008/11/28</td>
-                <td>$162,700</td>
-            </tr>
-            <tr>
-                <td>Brielle Williamson</td>
-                <td>Integration Specialist</td>
-                <td>New York</td>
-                <td>61</td>
-                <td>2012/12/02</td>
-                <td>$372,000</td>
-            </tr>
-            <tr>
-                <td>Herrod Chandler</td>
-                <td>Sales Assistant</td>
-                <td>San Francisco</td>
-                <td>59</td>
-                <td>2012/08/06</td>
-                <td>$137,500</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
-    </table>
-    -->
 {% endblock content %}

@@ -47,14 +47,18 @@ line.render()
 '''
 import json
 from pyecharts import Line
+
+
 def loadJson(path):
-    f = open(path, encoding='utf-8')   # 设置以utf-8解码模式读取文件，encoding参数必须设置，否则默认以gbk模式读取文件，当文件中包含中文时，会报错
+    f = open(path, encoding='utf-8')  # 设置以utf-8解码模式读取文件，encoding参数必须设置，否则默认以gbk模式读取文件，当文件中包含中文时，会报错
     dada = json.load(f)
     dada1 = []
     for m in range(len(dada)):
         if (dada[m]['省(市)名称'] == '北京'):
             dada1.append(dada[m])
     return dada1
+
+
 def showJson(data):
     attr = []
     v1 = []  # 鱼类养殖面积
@@ -66,13 +70,15 @@ def showJson(data):
         v1.append(data[i]['鱼类养殖面积'])
         v2.append(data[i]['海水养殖面积'])
         for j in data[i]:
-            print('-------------------'+j)
+            print('-------------------' + j)
         print(attr)
     line = Line("折线图-面积图示例")
     line.add("商家A", attr, v1, is_fill=True, line_opacity=0.2, area_opacity=0.4, symbol=None)
     line.add("商家B", attr, v2, is_fill=True, area_color='#000', area_opacity=0.3, is_smooth=True)
-    #line.show_config()
+    # line.show_config()
     line.render()
+
+
 if __name__ == '__main__':
     file_path = '/home/gislite/github/gorna/meta_xlsx/bk68.xlsx.json'
     data = loadJson(file_path)

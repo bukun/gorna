@@ -10,7 +10,7 @@ def my_view(request):
     print('=' * 40)
     print(request.params)
     try:
-        file_path = '/home/gislite/github/gorna/meta_xlsx/bk68.xlsx.json'
+        file_path = './meta_xlsx/bk68.xlsx.json'
         data = loadJson(file_path)
         thead = []
         tbody = []
