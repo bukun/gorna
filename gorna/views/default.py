@@ -6,6 +6,8 @@ from sqlalchemy.exc import DBAPIError
 
 from ..models import MyModel
 
+import os
+
 
 # One route, at /howdy/amy, so don't repeat on each @view_config
 @view_defaults(route_name='hello')
@@ -32,16 +34,37 @@ class HelloWorldViews:
         print('Deleted')
         return dict()
 
+
 @view_config(route_name='home', renderer='../templates/mytemplate.jinja2')
 def my_view(request):
     print('=' * 40)
     print(request.params)
+
+    inws = './meta_xlsx'
+    # xlsx_files = []
+    # for wroot, wdirs, wfiles in os.walk(inws):
+    #     for wfile in wfiles:
+    #         if wfile.lower().endswith('.xlsx'):
+    #             xlsx_files.append()
+    #
+
+    all_files = []
+    for uuvv in os.listdir(inws):
+        xlsx_files = []
+        the_path = os.path.join(inws, uuvv)
+        if os.path.isdir(the_path):
+            for ttt in os.listdir(the_path):
+                if ttt.lower().endswith('.xlsx'):
+                    xlsx_files.append([ttt, os.path.join(uuvv, ttt)])
+            all_files.append([uuvv, xlsx_files])
+
+    print(all_files)
     try:
         query = request.dbsession.query(MyModel)
         one = query.filter(MyModel.name == 'one').first()
     except DBAPIError:
         return Response(db_err_msg, content_type='text/plain', status=500)
-    return {'one': one, 'project': 'gorna'}
+    return {'one': one, 'project': 'gorna', 'all_files': all_files}
 
 
 db_err_msg = """\

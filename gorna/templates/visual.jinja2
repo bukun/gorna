@@ -1,40 +1,69 @@
-{% extends "dava_layout.jinja2" %}
+{% extends "dava_echarts.jinja2" %}
 {% block content %}
 
-<html lang="{{request.locale_name}}">
-    <body>
-        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-        <div id="main" style="width: 600px;height:400px;"></div>
-        <script type="text/javascript">
-            // 基于准备好的dom，初始化echarts实例
-            var myChart = echarts.init(document.getElementById('main'));
+     {{  titles[3:]  }}
+    <br />
 
-            // 指定图表的配置项和数据
-            var option = {
-                title: {
-                    text: 'ECharts 入门示例'
-                },
-                tooltip: {},
-                legend: {
-                    data:['北京']
-                },
-                xAxis: {
-                    data: {{ attr }}
-                },
-                yAxis: {
-                    data: {{ v2 }}
-                },
-                series: [{
-                    name: '销量',
-                    type: 'bar',
-                    data: [5, 20, 36, 10, 10, 20]
-                }]
-            };
 
-            // 使用刚指定的配置项和数据显示图表。
-            myChart.setOption(option);
-        </script>
-    </body>
-</html>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+{#    <div id="main" style="width: 600px;height:400px;"></div>#}
+{#    <script type="text/javascript">#}
+{#        // 基于准备好的dom，初始化echarts实例#}
+{#        var myChart = echarts.init(document.getElementById('main'));#}
+{##}
+{#        // 指定图表的配置项和数据#}
+{#        var option = {#}
+{#            title: {#}
+{#                text: 'ECharts 入门示例'#}
+{#            },#}
+{#            tooltip: {},#}
+{#            legend: {#}
+{#                data: ['销量']#}
+{#            },#}
+{#            xAxis: {#}
+{#                data: {{   titles[3:]  }}#}
+{#            },#}
+{#            yAxis: {},#}
+{#            series: [{#}
+{#                name: '销量',#}
+{#                type: 'bar',#}
+{#                data: {{   data[6][3:]   }}#}
+{#            }]#}
+{#        };#}
+{##}
+{#        // 使用刚指定的配置项和数据显示图表。#}
+{#        myChart.setOption(option);#}
+{#    </script>#}
+
+
+     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1200px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: {{   titles[5:]|safe  }}
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: {{   data[6][5:]   }}
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 
 {% endblock content %}

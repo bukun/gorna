@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale_name }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="pyramid web application">
+    <meta name="author" content="Pylons Project">
+    <link rel="shortcut icon" href="{{ request.static_url('gorna:static/pyramid-16x16.png') }}">
+
+    <title>Cookiecutter Alchemy project for the Pyramid Web Framework</title>
+
+    <link href="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+
+
+    <!-- Custom styles for this scaffold -->
+
+
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <script type="text/javascript" language="javascript"
+            src="{{ request.static_url('gorna:static/echarts.min.js') }}"></script>
+
+
+</head>
+
+<body>
+
+<div class="starter-template">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                {% block content %}
+                    <p>No content</p>
+                {% endblock content %}
+            </div>
+        </div>
+        <!--
+           <div class="row">
+             <div class="links">
+               <ul>
+                 <li><i class="glyphicon glyphicon-cog icon-muted"></i><a href="https://github.com/Pylons/pyramid">Github Project</a></li>
+                 <li><i class="glyphicon glyphicon-globe icon-muted"></i><a href="https://webchat.freenode.net/?channels=pyramid">IRC Channel</a></li>
+                 <li><i class="glyphicon glyphicon-home icon-muted"></i><a href="https://pylonsproject.org">Pylons Project</a></li>
+               </ul>
+             </div>
+           </div>
+
+           <div class="row">
+             <div class="copyright">
+               Copyright &copy; Pylons Project
+             </div>
+           </div>
+     -->
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+</body>
+</html>
+

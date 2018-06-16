@@ -2,33 +2,30 @@
 
 {% block content %}
 
-    <p>
-        输入一组范围：
-    </p>
-    <table border="0" cellspacing="5" cellpadding="5">
-        <tbody>
-        <tr>
-            <td>最小贝类养殖面积:</td>
-            <td><input type="text" id="min" name="min"></td>
-        </tr>
-        <tr>
-            <td>最大贝类养殖面积:</td>
-            <td><input type="text" id="max" name="max"></td>
-        </tr>
-        </tbody>
-    </table>
+
+{#    <div>#}
+{#					Toggle column: <a class="toggle-vis" data-column="0">Name</a> - <a class="toggle-vis" data-column="1">Position</a> - <a class="toggle-vis" data-column=#}
+{#					"2">Office</a> - <a class="toggle-vis" data-column="3">Age</a> - <a class="toggle-vis" data-column="4">Start date</a> - <a class="toggle-vis" data-column=#}
+{#					"5">Salary</a>#}
+{#				</div>#}
+{##}
+
+    <h3>{{ xlsx_title }}</h3>
+
 
     <table id="example" class="display" style="width:100%">
         <thead>
 
-        {% for title in titles %}
+        <tr>
+            {% for title in titles %}
 
-            <tr>
-                {% for item in title %}
-                    <td>{{ item }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
+
+
+                <td>{{ title }}</td>
+
+
+            {% endfor %}
+        </tr>
         </thead>
         <tbody>
         {% for value in values %}
@@ -39,7 +36,23 @@
             </tr>
         {% endfor %}
         </tbody>
+
+    <tfoot>
+            <tr>
+                {% for title in titles %}
+
+
+
+                <th>{{ title }}</th>
+
+
+            {% endfor %}
+            </tr>
+        </tfoot>
     </table>
+
+     <a id="button" class="btn btn-primary">数据可视化</a>
+    <div id="data_chart" style="width: 90%;height:300px;"></div>
 
 
 {% endblock content %}

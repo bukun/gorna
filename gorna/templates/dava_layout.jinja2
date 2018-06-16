@@ -13,7 +13,7 @@
     <link href="//oss.maxcdn.com/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.datatables.net/1.10.17/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css" rel="stylesheet">
 
 
     <!-- Custom styles for this scaffold -->
@@ -25,11 +25,118 @@
             crossorigin="anonymous"></script>
 
     <script type="text/javascript" language="javascript"
-            src="https://cdn.datatables.net/1.10.17/js/jquery.dataTables.min.js"></script>
+            src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" language="javascript"
+            src="{{ request.static_url('gorna:static/echarts.min.js') }}"></script>
+
+    <style type="text/css">
+        tfoot input {
+            width: 100%;
+            padding: 3px;
+            box-sizing: border-box;
+        }
+    </style>
 
     <script>
+
         $(document).ready(function () {
-            $('#example').DataTable({});
+
+            {#var data_start_m = {{ codes|safe }}.indexOf('D');#}
+            {#alert(data_start_m);#}
+
+
+            var table = $('#example').DataTable({
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    });
+                }
+            });
+
+            $('a.toggle-vis').on( 'click', function (e) {
+        e.preventDefault();
+
+        // Get the column API object
+        var column = table.column( $(this).attr('data-column') );
+
+        // Toggle the visibility
+        column.visible( ! column.visible() );
+    } );
+
+
+            $('#example tbody').on('click', 'tr', function () {
+                $(this).toggleClass('selected');
+            });
+
+            $('#button').click(function () {
+
+                var row_count = table.rows('.selected').data().length;
+                if (row_count == 0) {
+                    alert('请在表格中选择数据');
+                    return;
+                }
+
+
+                {#alert(table.rows('.selected').data().length + ' row(s) selected');#}
+                var ids = $.map(table.rows('.selected').data(), function (item) {
+                    return [item]
+                });
+                console.log(ids);
+                // alert(+ ' row(s) selected');
+
+
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById('data_chart'));
+
+                var chart_type = 'bar';
+
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: '人地系统数据库图表可视化'
+                    },
+                    tooltip: {},
+                    legend: {
+                        data: $.map(ids, function (item) {
+                            return item[0]
+                        })
+                    },
+                    xAxis: {
+                        data: {{   titles[data_start_m:]|safe  }}
+                    },
+                    yAxis: {},
+                    series: $.map(ids, function (item) {
+                        return {
+                            name: item[0],
+                            type: chart_type,
+                            data: item.splice({{ data_start_m }})
+                        }
+                    })
+
+
+                };
+
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+
+
+            });
         });
 
     </script>
@@ -38,34 +145,13 @@
 
 <body>
 
-<div class="starter-template">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10">
+
+
                 {% block content %}
                     <p>No content</p>
                 {% endblock content %}
-            </div>
-        </div>
-        <!--
-           <div class="row">
-             <div class="links">
-               <ul>
-                 <li><i class="glyphicon glyphicon-cog icon-muted"></i><a href="https://github.com/Pylons/pyramid">Github Project</a></li>
-                 <li><i class="glyphicon glyphicon-globe icon-muted"></i><a href="https://webchat.freenode.net/?channels=pyramid">IRC Channel</a></li>
-                 <li><i class="glyphicon glyphicon-home icon-muted"></i><a href="https://pylonsproject.org">Pylons Project</a></li>
-               </ul>
-             </div>
-           </div>
 
-           <div class="row">
-             <div class="copyright">
-               Copyright &copy; Pylons Project
-             </div>
-           </div>
-     -->
-    </div>
-</div>
+
 
 
 <!-- Bootstrap core JavaScript

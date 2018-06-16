@@ -15,15 +15,16 @@
 
 
     <!-- Custom styles for this scaffold -->
-    <link href="{{request.static_url('gorna:static/theme.css')}}" rel="stylesheet">
+{#    <link href="{{request.static_url('gorna:static/theme.css')}}" rel="stylesheet">#}
 
   </head>
 
   <body>
 
-    <div class="starter-template">
-      <a href="/datable">datable</a>
-    </div>
+
+  {% block content %}
+{% endblock content %}
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
