@@ -41,8 +41,6 @@ def load_excel(path):
             map_arr[worksheet.cell(row=idx_row,
                                    column=map_start_m).value] = worksheet.cell(row=idx_row,
                                                                                column=data_stgart_m).value
-    print('x' * 40)
-    print(map_arr)
 
     totalArray = {
         'titles': t_arr,

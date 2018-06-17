@@ -3,6 +3,6 @@ def includeme(config):
     config.add_route('home', '/')
     config.add_route('datable', '/datable/{sig0}/{sig1}')
     config.add_route('hello', '/hello')
-    config.add_route('visual', '/visual')
+    # config.add_route('visual', '/visual')
 
 

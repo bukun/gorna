@@ -9,30 +9,39 @@ from ..models import MyModel
 import os
 
 
-# One route, at /howdy/amy, so don't repeat on each @view_config
 @view_defaults(route_name='hello')
-class HelloWorldViews:
+class TutorialViews(object):
     def __init__(self, request):
         self.request = request
-        # Our templates can now say {{ view.name }}
-        self.name = request.matchdict['name']
+        self.view_name = 'TutorialViews'
 
-    # Retrieving /howdy/amy the first time
-    @view_config(renderer='hello.jinja2')
-    def hello_view(self):
-        return dict()
+    @property
+    def full_name(self):
+        first = self.request.matchdict['first']
+        last = self.request.matchdict['last']
+        return first + ' ' + last
 
-    # Posting to /howdy/amy via the "Edit" submit button
-    @view_config(request_param='form.edit', renderer='edit.jinja2')
-    def edit_view(self):
-        print('Edited')
-        return dict()
+    # @view_config(route_name='home', renderer='home.pt')
+    # def home(self):
+    #     return {'page_title': 'Home View'}
 
-    # Posting to /howdy/amy via the "Delete" submit button
-    @view_config(request_param='form.delete', renderer='delete.jinja2')
-    def delete_view(self):
+    # Retrieving /howdy/first/last the first time
+    @view_config(renderer='../templates/mytemplate.jinja2')
+    def hello(self):
+        return {'page_title': 'Hello View'}
+
+    # Posting to /howdy/first/last via the "Edit" submit button
+    @view_config(request_method='POST', renderer='edit.pt')
+    def edit(self):
+        new_name = self.request.params['new_name']
+        return {'page_title': 'Edit View', 'new_name': new_name}
+
+    # Posting to /howdy/first/last via the "Delete" submit button
+    @view_config(request_method='POST', request_param='form.delete',
+                 renderer='delete.pt')
+    def delete(self):
         print('Deleted')
-        return dict()
+        return {'page_title': 'Delete View'}
 
 
 @view_config(route_name='home', renderer='../templates/mytemplate.jinja2')
@@ -41,12 +50,6 @@ def my_view(request):
     print(request.params)
 
     inws = './meta_xlsx'
-    # xlsx_files = []
-    # for wroot, wdirs, wfiles in os.walk(inws):
-    #     for wfile in wfiles:
-    #         if wfile.lower().endswith('.xlsx'):
-    #             xlsx_files.append()
-    #
 
     all_files = []
     for uuvv in os.listdir(inws):
