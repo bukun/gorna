@@ -10,7 +10,7 @@ def load_excel(path):
     mcol = worksheet.max_column
     mrow = worksheet.max_row
 
-    xlsx_title  = worksheet.cell(row=1, column=2).value
+    xlsx_title = worksheet.cell(row=1, column=2).value
     danwei_arr = ['']
     for idx in range(1, mcol + 1):
         danwei_arr.append(worksheet.cell(row=7, column=idx).value)
@@ -33,13 +33,25 @@ def load_excel(path):
         d_arr.append(r_arr)
         id_index = id_index + 1
 
+    map_arr = {}
+    data_stgart_m = code_arr.index('D')
+    map_start_m = code_arr.index('CS') if 'CS' in code_arr else -1
+    if map_start_m != -1:
+        for idx_row in range(10, mrow + 1):
+            map_arr[worksheet.cell(row=idx_row,
+                                   column=map_start_m).value] = worksheet.cell(row=idx_row,
+                                                                               column=data_stgart_m).value
+    print('x' * 40)
+    print(map_arr)
+
     totalArray = {
         'titles': t_arr,
         'values': d_arr,
         'codes': code_arr,
         'danwei': danwei_arr,
-        'data_start_m': code_arr.index('D'),
-        'xlsx_title': xlsx_title
+        'data_start_m': data_stgart_m,
+        'xlsx_title': xlsx_title,
+        'map_arr': map_arr
     }
 
     return totalArray
