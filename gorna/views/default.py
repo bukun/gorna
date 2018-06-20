@@ -4,7 +4,7 @@ from pyramid.view import view_defaults
 
 from sqlalchemy.exc import DBAPIError
 
-# from ..models import MyModel
+from ..models.mymodel import MyModel
 
 import os
 

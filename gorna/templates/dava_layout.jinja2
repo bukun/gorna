@@ -50,36 +50,118 @@
 
             var table = $('#example').DataTable({
                 initComplete: function () {
+                    var i = 1;
+                    var min = $('.min')[0].id;
+                    var minlen = min.toString().substring(4);
                     this.api().columns().every(function () {
-                        var column = this;
-                        var select = $('<select><option value=""></option></select>')
-                            .appendTo($(column.footer()).empty())
-                            .on('change', function () {
-                                var val = $.fn.dataTable.util.escapeRegex(
-                                    $(this).val()
-                                );
-
-                                column
-                                    .search(val ? '^' + val + '$' : '', true, false)
-                                    .draw();
-                            });
-
-                        column.data().unique().sort().each(function (d, j) {
-                            select.append('<option value="' + d + '">' + d + '</option>')
-                        });
+                        if(i<minlen&&i!=1){
+                            var column = this;
+                                var select = $('<select><option value=""></option></select>')
+                                    .appendTo($(column.footer()).empty())
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+                                        column
+                                            .search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                    });
+                                column.data().unique().sort().each(function (d, j) {
+                                    select.append('<option value="' + d + '">' + d + '</option>')
+                                });
+                         }
+                         i++;
                     });
+
                 }
             });
 
+
+
+
+
+
+            var table = $('#example').DataTable();
+            // search
+            {#
+            $('.search').keyup( function() {
+                var min = $('.min')[0].id;
+                var minlen = min.toString().substring(4);
+                var searchid = this.id.toString();
+                var id = searchid.substring(7)-1;
+                //alert(id)
+                //table.columns(3).search($('#search'+searchid).val(),true,false).draw();
+                alert(searchid)
+                alert(min)
+                for(var i=2;i<minlen;i++){
+                    if(1==1){
+                        var value = $('#search-'+i).val().length
+                        if(value>0){
+                            alert('run')
+                            //alert($('#'+i).val())
+                            table.columns(i).search($('.search').val(),true,false).draw();
+                        }
+
+                    }
+                }
+            } );
+
+            $('.search').keyup( function() {
+                var searchid = this.id.toString();
+                var id = searchid.substring(7)-1;
+                alert(searchid)
+                alert(id)
+                table.columns(id).search($('.search').val(),true,false).draw(); //第三行 id search-4
+             });
+             #}
+
+
+             // search
+
+
+
+
+            // min max
+
+
+            // Event listener to the two range filtering inputs to redraw on input
+            $('.min, .max').keyup( function() {
+
+                tableDraw(this.id.substring(4));
+                table.draw();
+            } );
+            function tableDraw(id){
+                $.fn.dataTable.ext.search.push(
+                    function( settings, data, dataIndex ) {
+                        var min = parseInt( $('#'+'min-'+id).val(), 10 );
+                        var max = parseInt( $('#'+'max-'+id).val(), 10 );
+
+                        var age = parseFloat( data[id-1] ); // use data for the age column
+
+                        if ( ( isNaN( min ) && isNaN( max ) ) ||
+                             ( isNaN( min ) && age <= max ) ||
+                             ( min <= age   && isNaN( max ) ) ||
+                             ( min <= age   && age <= max ) )
+                        {
+                            return true;
+                        }
+                        return false;
+
+                    }
+                );
+            }
+
+
+
             $('a.toggle-vis').on( 'click', function (e) {
-        e.preventDefault();
+                e.preventDefault();
 
-        // Get the column API object
-        var column = table.column( $(this).attr('data-column') );
+                // Get the column API object
+                var column = table.column( $(this).attr('data-column') );
 
-        // Toggle the visibility
-        column.visible( ! column.visible() );
-    } );
+                // Toggle the visibility
+                column.visible( ! column.visible() );
+            } );
 
 
             $('#example tbody').on('click', 'tr', function () {
@@ -89,6 +171,7 @@
             $('#button').click(function () {
 
                 var row_count = table.rows('.selected').data().length;
+
                 if (row_count == 0) {
                     alert('请在表格中选择数据');
                     return;

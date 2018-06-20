@@ -38,16 +38,21 @@
         </tbody>
 
         <tfoot>
-        <tr>
-            {% for title in titles %}
+            <tr>
+               {% for code in codes %}
 
-
-
-                <th>{{ title }}</th>
-
-
-            {% endfor %}
-        </tr>
+                    {% if code == 'D' %}
+                        <td>
+                            <input id="min-{{loop.index}}" class = "min" name="min" placeholder="最小值" type="text">
+                            <input id="max-{{loop.index}}" class = "max" name="max" placeholder="最大值" type="text">
+                        </td>
+                    {% elif code == '' %}
+                        <td></td>
+                    {% else %}
+                        <td><input placeholder="---" type="text" id = "search-{{loop.index}}" class = "search"></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
         </tfoot>
     </table>
 
