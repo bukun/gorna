@@ -112,16 +112,11 @@
             } );
             #}
             $('.search').keyup( function() {
-                var value1 = $('#search-2').val().length;
-                if(value1>0){
-                    table.columns(1).search($('.search').val(),true,false).draw(); //第一行
-                }
-
-                var value = $('#search-4').val().length;
-                if(value>0){
-                    table.columns(3).search($('.search').val(),true,false).draw(); //第三行 id search-4
-                }
-
+                var searchid = this.id.toString();
+                var id = searchid.substring(7)-1;
+                alert(searchid)
+                alert(id)
+                table.columns(id).search($('.search').val(),true,false).draw(); //第三行 id search-4
              });
 
             //table.columns(3).search($('.search').val(),true,false).draw();
