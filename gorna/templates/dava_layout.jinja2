@@ -47,47 +47,42 @@
             {#var data_start_m = {{ codes|safe }}.indexOf('D');#}
             {#alert(data_start_m);#}
 
-            {#  下拉框注释
+
             var table = $('#example').DataTable({
                 initComplete: function () {
-
+                    var i = 1;
+                    var min = $('.min')[0].id;
+                    var minlen = min.toString().substring(4);
                     this.api().columns().every(function () {
-                        var column = this;
-                        var select = $('<select><option value=""></option></select>')
-                            .appendTo($(column.footer()).empty())
-                            .on('change', function () {
-                                var val = $.fn.dataTable.util.escapeRegex(
-                                    $(this).val()
-                                );
-
-                                column
-                                    .search(val ? '^' + val + '$' : '', true, false)
-                                    .draw();
-                            });
-
-                        column.data().unique().sort().each(function (d, j) {
-                            select.append('<option value="' + d + '">' + d + '</option>')
-                        });
+                        if(i<minlen&&i!=1){
+                            var column = this;
+                                var select = $('<select><option value=""></option></select>')
+                                    .appendTo($(column.footer()).empty())
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+                                        column
+                                            .search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                    });
+                                column.data().unique().sort().each(function (d, j) {
+                                    select.append('<option value="' + d + '">' + d + '</option>')
+                                });
+                         }
+                         i++;
                     });
 
                 }
             });
-            #}
+
+
+
+
+
+
             var table = $('#example').DataTable();
             // search
-            {#
-            table.columns().every( function () {
-                alert(this[0].className)
-                var that = this;
-                $( 'input', this.footer() ).on( 'keyup change', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                } );
-            } );
-            #}
             {#
             $('.search').keyup( function() {
                 var min = $('.min')[0].id;
@@ -110,7 +105,7 @@
                     }
                 }
             } );
-            #}
+
             $('.search').keyup( function() {
                 var searchid = this.id.toString();
                 var id = searchid.substring(7)-1;
@@ -118,8 +113,11 @@
                 alert(id)
                 table.columns(id).search($('.search').val(),true,false).draw(); //第三行 id search-4
              });
+             #}
 
-            //table.columns(3).search($('.search').val(),true,false).draw();
+
+             // search
+
 
 
 
@@ -173,6 +171,7 @@
             $('#button').click(function () {
 
                 var row_count = table.rows('.selected').data().length;
+
                 if (row_count == 0) {
                     alert('请在表格中选择数据');
                     return;
