@@ -62,12 +62,7 @@ def my_view(request):
             all_files.append([uuvv, xlsx_files])
 
     print(all_files)
-    try:
-        query = request.dbsession.query(MyModel)
-        one = query.filter(MyModel.name == 'one').first()
-    except DBAPIError:
-        return Response(db_err_msg, content_type='text/plain', status=500)
-    return {'one': one, 'project': 'gorna', 'all_files': all_files}
+    return {'project': 'gorna', 'all_files': all_files}
 
 
 db_err_msg = """\
