@@ -10,11 +10,20 @@ from ..models import Page
 # regular expression used to find WikiWords
 wikiwords = re.compile(r"\b([A-Z]\w+[A-Z]+\w+)")
 
+'''
+view_wiki() 
+is the default view that gets called when a request is made to the root URL of our wiki. 
+It always redirects to a URL which represents the path to our "FrontPage"
+'''
 @view_config(route_name='view_wiki')
 def view_wiki(request):
     next_url = request.route_url('view_page', pagename='FrontPage')
     return HTTPFound(location=next_url)
 
+
+'''
+used to display a single page of our wiki.
+'''
 @view_config(route_name='view_page', renderer='../templates/view.jinja2',
              permission='view')
 def view_page(request):
@@ -35,10 +44,18 @@ def view_page(request):
     edit_url = request.route_url('edit_page', pagename=page.name)
     return dict(page=page, content=content, edit_url=edit_url)
 
+
+'''
+If the view execution is a result of a form submission, the view grabs the body element of the request parameters and 
+sets it as the data attribute of the page object. It then redirects to the view_page view of the wiki page.
+If the view execution is not a result of a form submission,the view simply renders the edit form, passing the page object
+and a save_url which will be used as the action of the generated form.
+'''
 @view_config(route_name='edit_page', renderer='../templates/edit.jinja2',
              permission='edit')
 def edit_page(request):
     page = request.context.page
+
     if 'form.submitted' in request.params:
         page.data = request.params['body']
         next_url = request.route_url('view_page', pagename=page.name)
@@ -49,6 +66,10 @@ def edit_page(request):
         save_url=request.route_url('edit_page', pagename=page.name),
         )
 
+
+'''
+ is invoked when a user clicks on a WikiWord which isn't yet represented as a page in the system
+'''
 @view_config(route_name='add_page', renderer='../templates/edit.jinja2',
              permission='create')
 def add_page(request):
