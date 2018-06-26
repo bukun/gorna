@@ -15,6 +15,8 @@ view_wiki()
 is the default view that gets called when a request is made to the root URL of our wiki. 
 It always redirects to a URL which represents the path to our "FrontPage"
 '''
+
+
 @view_config(route_name='view_wiki')
 def view_wiki(request):
     next_url = request.route_url('view_page', pagename='FrontPage')
@@ -24,8 +26,9 @@ def view_wiki(request):
 '''
 used to display a single page of our wiki.
 '''
-@view_config(route_name='view_page', renderer='../templates/view.jinja2',
-             permission='view')
+
+
+@view_config(route_name='view_page', renderer='../templates/view.jinja2', permission='view')
 def view_page(request):
     page = request.context.page
 
@@ -51,8 +54,9 @@ sets it as the data attribute of the page object. It then redirects to the view_
 If the view execution is not a result of a form submission,the view simply renders the edit form, passing the page object
 and a save_url which will be used as the action of the generated form.
 '''
-@view_config(route_name='edit_page', renderer='../templates/edit.jinja2',
-             permission='edit')
+
+
+@view_config(route_name='edit_page', renderer='../templates/edit.jinja2', permission='edit')
 def edit_page(request):
     page = request.context.page
 
@@ -64,14 +68,15 @@ def edit_page(request):
         pagename=page.name,
         pagedata=page.data,
         save_url=request.route_url('edit_page', pagename=page.name),
-        )
+    )
 
 
 '''
  is invoked when a user clicks on a WikiWord which isn't yet represented as a page in the system
 '''
-@view_config(route_name='add_page', renderer='../templates/edit.jinja2',
-             permission='create')
+
+
+@view_config(route_name='add_page', renderer='../templates/edit.jinja2', permission='create')
 def add_page(request):
     pagename = request.context.pagename
     if 'form.submitted' in request.params:

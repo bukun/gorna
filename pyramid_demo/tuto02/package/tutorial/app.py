@@ -15,7 +15,7 @@ def hello_world(request):
 
 if __name__ == '__main__':
     with Configurator() as config:
-        config.add_route('hello', '/')
-        config.add_view(hello_world, route_name='hello')
+        config.add_route('posts', '/')
+        config.add_view(hello_world, route_name='posts')
         app = config.make_wsgi_app()
     serve(app, host='0.0.0.0', port=6543)

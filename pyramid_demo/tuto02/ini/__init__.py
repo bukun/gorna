@@ -8,6 +8,6 @@ def hello_world(request):
 
 def main(global_config, **settings):
     config = Configurator(settings=settings)
-    config.add_route('hello', '/')
-    config.add_view(hello_world, route_name='hello')
+    config.add_route('posts', '/')
+    config.add_view(hello_world, route_name='posts')
     return config.make_wsgi_app()
