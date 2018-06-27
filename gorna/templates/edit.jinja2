@@ -3,6 +3,7 @@
 {% block subtitle %}Edit {{pagename}} - {% endblock subtitle %}
 
 {% block content %}
+<div class="container-fluid">
 <p>
 Editing <strong>{{pagename}}</strong>
 </p>
@@ -13,8 +14,18 @@ Editing <strong>{{pagename}}</strong>
 <div class="form-group">
     <textarea class="form-control" name="body" rows="10" cols="60">{{ pagedata }}</textarea>
 </div>
+
+<!--
+#编辑器代码
+<textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea>
+<script>
+	initSample();
+</script>
+-->
+
 <div class="form-group">
     <button type="submit" name="form.submitted" value="Save" class="btn btn-default">Save</button>
 </div>
 </form>
-{% endblock content %}
+</div>
+{% endblock content %}ss

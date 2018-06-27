@@ -3,6 +3,7 @@
 {% block subtitle %}{{page.name}} - {% endblock subtitle %}
 
 {% block content %}
+<div class="container-fluid">
 <p>{{ content|safe }}</p>
 <p>
 <a href="{{ edit_url }}">
@@ -16,3 +17,4 @@
 <a href="{{request.route_url('view_page', pagename='FrontPage')}}">FrontPage</a>.
 </p>
 {% endblock content %}
+</div>
