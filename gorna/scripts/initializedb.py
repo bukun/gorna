@@ -16,7 +16,10 @@ from ..models import (
     get_tm_session,
     )
 # from ..models import
+
 from ..models import Page, User, PostModel
+from ..models.news import News
+
 
 
 def usage(argv):
@@ -56,4 +59,12 @@ def main(argv=sys.argv):
             data='This is the front page',
         )
         dbsession.add(page)
+
+        news = News(
+            title='title',
+            content='content',
+            time_create='',
+            time_update='',
+        )
+        dbsession.add(news)
 

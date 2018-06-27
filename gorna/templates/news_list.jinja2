@@ -1,0 +1,41 @@
+{% block content %}
+
+<table >
+    <thead>
+        <tr>
+           <td>标题</td>
+           <td>内容</td>
+           <td>创建时间</td>
+           <td>更新时间</td>
+        </tr>
+        </thead>
+     <tbody>
+
+            {% for new in news %}
+            <tr>
+                <td contentEditable="true">{{ new.title }}</td>
+                <td contentEditable="true">{{ new.content }}</td>
+                <td>{{ new.time_create }}</td>
+                <td>{{ new.time_update }}</td>
+                <td hidden="true">{{ new.uid }}</td>
+                <td> <button id="updateBtn">修改</button> </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+</table>
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    $(document).on('click', '#updateBtn', function () {
+         var title=$(this).parents("tr").find("td").eq(0).text();
+         var content=$(this).parents("tr").find("td").eq(1).text();
+         var uid=$(this).parents("tr").find("td").eq(4).text();
+        jQuery.ajax({type:'POST',
+             url: 'http://0.0.0.0:5543/post/update', // the pyramid server
+             data: JSON.stringify({"title":title,
+                                    "content":content,
+                                    "uid":uid}),
+             contentType: 'application/json; charset=utf-8'});
+    })
+</script>
+{% endblock content %}

@@ -30,14 +30,15 @@
     <script type="text/javascript" language="javascript"
             src="{{ request.static_url('gorna:static/echarts.min.js') }}"></script>
 
-        <script src="{{ request.static_url('gorna:static/china.js') }}"></script>
-
+    <script src="{{ request.static_url('gorna:static/china.js') }}"></script>
     <style type="text/css">
+        #example_filter input{ margin-right: 16px;}
         tfoot input {
             width: 100%;
             padding: 3px;
             box-sizing: border-box;
         }
+
     </style>
 
     <script>
@@ -200,9 +201,10 @@
 </nav>
 
 
-                {% block content %}
-                    <p>No content</p>
-                {% endblock content %}
+
+{% block content %}
+    <p>No content</p>
+{% endblock content %}
 
 
 

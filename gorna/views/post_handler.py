@@ -39,7 +39,6 @@ class PostViews(object):
     def __init__(self, request):
         self.request = request
         self.view_name = 'TutorialViews'
-        print('-' * 40)
 
     # Retrieving /howdy/first/last the first time
     @view_config(renderer='../templates/posts/add.jinja2')
