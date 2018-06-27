@@ -6,8 +6,12 @@
     pip install wheel
     pip install pyramid cookiecutter
 
-pyramid-cookiecutter-starterURL dispatch for routing and either Jinja2, Chameleon, or Mako for templatingpyramid-cookiecutter-alchemySQLite for persistent storage, SQLAlchemy for an ORM, URL dispatch for routing, and Jinja2 for templating.pyramid-cookiecutter-zodb
-ZODB for persistent storage, traversal for routing, and Chameleon for templating
+pyramid-cookiecutter-starterURL dispatch for routing and either Jinja2,
+Chameleon, or Mako for templatingpyramid-cookiecutter-alchemySQLite for persistent storage, 
+SQLAlchemy for an ORM, URL dispatch for routing, 
+and Jinja2 for templating.pyramid-cookiecutter-zodb
+ZODB for persistent storage, traversal for routing, 
+and Chameleon for templating
 
 
 
@@ -27,10 +31,19 @@ ZODB for persistent storage, traversal for routing, and Chameleon for templating
 
     initialize_gorna_db development.ini
 
-    pserve development.ini
+   
+注意，在数据库结构进行修改后，运行可能会有问题，这时要删除掉数据库文件，然后重新初始化数据库：
 
+    rm gorna.sqlite
+    initialize_gorna_db development.ini
+    
 开发环境中， 可以运行下面命令，修改过程可以自动加载重启：
+
+    pserve development.ini --reload
+
+下面是开始时开发时使用的简化代码：
 
     source ~/vpy_gorna/bin/activate
     cd github/gorna
     pserve development.ini --reload
+

@@ -19,7 +19,6 @@ class PostViews(object):
     @property
     def full_name(self):
         first = self.request.matchdict['first']
-
         print('=' * 40)
         print(first)
         return first
@@ -28,11 +27,11 @@ class PostViews(object):
     def home(self):
         return {'page_title': 'Home View'}
 
-    # Posting to /howdy/first/last via the "Delete" submit button
-    @view_config(request_method='POST', request_param='form.delete', renderer='delete.pt')
-    def delete(self):
-        print('Deleted')
-        return {'page_title': 'Delete View'}
+    # # Posting to /howdy/first/last via the "Delete" submit button
+    # @view_config(request_method='POST', request_param='form.delete', renderer='delete.pt')
+    # def delete(self):
+    #     print('Deleted')
+    #     return {'page_title': 'Delete View'}
 
 
 @view_defaults(route_name='post_add')

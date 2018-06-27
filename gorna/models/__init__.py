@@ -8,6 +8,7 @@ import zope.sqlalchemy
 # from .mymodel import MyModel  # flake8: noqa
 from .page import Page  # noqa
 from .user import User  # noqa
+from .postmodel import PostModel  # noqa
 
 
 # run configure_mappers after defining all of the models to ensure

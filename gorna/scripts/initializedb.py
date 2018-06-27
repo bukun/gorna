@@ -16,7 +16,7 @@ from ..models import (
     get_tm_session,
     )
 # from ..models import
-from ..models import Page, User
+from ..models import Page, User, PostModel
 
 
 def usage(argv):
