@@ -27,10 +27,10 @@ def includeme(config):
     config.add_route('edit_page', '/{pagename}/edit_page', factory=page_factory)
 
     '''begin'''
-    config.add_route('news_list', '/post/list')
-    config.add_route('news_add', '/post/add')
-    config.add_route('news_add1', '/post/add1')
-    config.add_route('news_update', '/post/update')
+    config.add_route('news_list', '/post1/list')
+    config.add_route('news_add', '/post1/add')
+    config.add_route('news_add1', '/post1/add1')
+    config.add_route('news_update', '/post1/update')
     '''end'''
 
 
