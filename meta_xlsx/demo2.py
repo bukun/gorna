@@ -10,10 +10,10 @@ def loadJson(path):
             dada1.append(dada)
     return dada1
 urls = (
-    '/(.*)', 'hello'
+    '/(.*)', 'posts'
 )
 app = web.application(urls, globals())
-class hello:
+class posts:
     def GET(self, name):
         web.header('Content-Type', 'text/html;charset=UTF-8')
         file_path = '/home/gislite/github/gorna/meta_xlsx/bk68.xlsx.json'

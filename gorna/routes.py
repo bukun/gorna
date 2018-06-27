@@ -14,23 +14,18 @@ def includeme(config):
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
     config.add_route('datable', '/datable/{sig0}/{sig1}')
-    config.add_route('hello', '/hello')
-    # config.add_route('visual', '/visual')
+    config.add_route('post_add', '/post/_add')
+    config.add_route('post_view', '/post/{sig0}')
 
     config.add_route('view_wiki', '/')
-    # config.add_route('view_page', '/{pagename}')
-    # config.add_route('add_page', '/add_page/{pagename}')
-    # config.add_route('edit_page', '/{pagename}/edit_page')
-
 
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
 
     config.add_route('view_page', '/{pagename}', factory=page_factory)
-    config.add_route('add_page', '/add_page/{pagename}',
-                     factory=new_page_factory)
-    config.add_route('edit_page', '/{pagename}/edit_page',
-                     factory=page_factory)
+    config.add_route('add_page', '/add_page/{pagename}', factory=new_page_factory)
+    config.add_route('edit_page', '/{pagename}/edit_page', factory=page_factory)
+
     '''begin'''
     config.add_route('news_list', '/post/list')
     config.add_route('news_add', '/post/add')

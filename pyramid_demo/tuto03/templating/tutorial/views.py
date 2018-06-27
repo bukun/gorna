@@ -8,6 +8,6 @@ def home(request):
 
 
 # /howdy
-@view_config(route_name='hello', renderer='home.pt')
+@view_config(route_name='posts', renderer='home.pt')
 def hello(request):
     return {'name': 'Hello View'}
