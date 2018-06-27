@@ -1,0 +1,16 @@
+{% block content %}
+{{ add_url }}
+<form action="{{ add_url }}" method="post">
+<div class="form-group">
+
+    标题：    <input  id="title" name="title" type="text">
+
+    内容：     <textarea name="content" rows="10" cols="80" type=""></textarea>
+
+</div>
+<div class="form-group">
+    <button type="submit" name="form.submitted" value="Add" class="btn btn-default">Save</button>
+</div>
+</form>
+
+{% endblock content %}

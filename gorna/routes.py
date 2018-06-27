@@ -31,6 +31,12 @@ def includeme(config):
                      factory=new_page_factory)
     config.add_route('edit_page', '/{pagename}/edit_page',
                      factory=page_factory)
+    '''begin'''
+    config.add_route('news_list', '/post/list')
+    config.add_route('news_add', '/post/add')
+    config.add_route('news_add1', '/post/add1')
+    config.add_route('news_update', '/post/update')
+    '''end'''
 
 
 def new_page_factory(request):
