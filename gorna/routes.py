@@ -28,6 +28,47 @@ def includeme(config):
     config.add_route('add_page', '/add_page/{pagename}', factory=new_page_factory)
     config.add_route('edit_page', '/{pagename}/edit_page', factory=page_factory)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    config.add_route('_rating', '/_rating/_update')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     '''begin'''
     config.add_route('news_list', '/post1/list')
     config.add_route('news_add', '/post1/add')

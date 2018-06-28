@@ -5,7 +5,7 @@ import transaction
 from pyramid.paster import (
     get_appsettings,
     setup_logging,
-    )
+)
 
 from pyramid.scripts.common import parse_vars
 
@@ -14,13 +14,11 @@ from ..models import (
     get_engine,
     get_session_factory,
     get_tm_session,
-    )
+)
 # from ..models import
 
-from ..models import Page, User, PostModel
-# ToDo: 按 TorCMS的表结构，添加相应的表及各字段。PostgreSQL的 extinfo 字段先按 TEXT 添加。
-
-from ..models.news import News
+from ..models import Label, Link, Post, Page, PostHist, PageHist, User, Entity, Post2Tag, Reply, user2reply, Collect, \
+    Evaluation, Rating, Usage, Rel, Entity2User
 
 
 
@@ -62,11 +60,10 @@ def main(argv=sys.argv):
         )
         dbsession.add(page)
 
-        news = News(
+        news = Post(
             title='title',
             content='content',
             time_create='',
             time_update='',
         )
         dbsession.add(news)
-

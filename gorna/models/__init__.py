@@ -6,9 +6,23 @@ import zope.sqlalchemy
 # import or define all models here to ensure they are attached to the
 # Base.metadata prior to any initialization routines
 # from .mymodel import MyModel  # flake8: noqa
-from .page import Page  # noqa
-from .user import User  # noqa
-from .postmodel import PostModel  # noqa
+from .page import Page
+from .user import User
+from .post import Post
+from .label import Label
+from .link import Link
+from .post_hist import PostHist
+from .page_hist import PageHist
+from .entity import Entity
+from .post2tag import Post2Tag
+from .reply import Reply
+from .user2reply import User2Reply
+from .collect import Collect
+from .evaluation import Evaluation
+from .rating import Rating
+from .usage import Usage
+from .rel import Rel
+from .entity2user import Entity2User
 
 
 # run configure_mappers after defining all of the models to ensure
