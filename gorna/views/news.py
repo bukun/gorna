@@ -1,11 +1,11 @@
 from pyramid.view import view_config
-from ..models.news import News
+from ..models.post import Post
 import datetime
 
 
 @view_config(route_name='news_list', renderer='../templates/news_list.jinja2')
 def view_list(request):
-    news = request.dbsession.query(News).all()
+    news = request.dbsession.query(Post).all()
     return {'news': news, 'new_name': '123'}
 
 
@@ -17,13 +17,13 @@ def add(request):
 
 @view_config(route_name='news_add1', renderer='../templates/news_list.jinja2')
 def add1(request):
-    new = News()
+    new = Post()
     new.title = request.params['title']
     new.content = request.params['content']
     new.time_create = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     new.time_update = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     request.dbsession.add(new)
-    news = request.dbsession.query(News).all()
+    news = request.dbsession.query(Post).all()
     return {'news': news}
 
 
@@ -36,11 +36,11 @@ def update(request):
     title = json['title']
     content = json['content']
     uid = json['uid']
-    news_result = request.dbsession.query(News).filter_by(uid=uid).first()
+    news_result = request.dbsession.query(Post).filter_by(uid=uid).first()
     news_result.title = title
     news_result.content = content
     #request.dbsession.commit()
-    news = request.dbsession.query(News).all()
+    news = request.dbsession.query(Post).all()
     return {'news': news}
 
 

@@ -32,36 +32,7 @@ def includeme(config):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     config.add_route('_rating', '/_rating/_update')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
