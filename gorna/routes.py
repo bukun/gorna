@@ -11,6 +11,8 @@ from .models import Page
 
 
 def includeme(config):
+    # ToDo: 按 TorCMS的路由，添加本项目路由。建立好 Handler 文件及 Class 。各方法为空即可。
+
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
     config.add_route('datable', '/datable/{sig0}/{sig1}')

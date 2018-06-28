@@ -18,6 +18,8 @@ from ..models import (
 # from ..models import
 
 from ..models import Page, User, PostModel
+# ToDo: 按 TorCMS的表结构，添加相应的表及各字段。PostgreSQL的 extinfo 字段先按 TEXT 添加。
+
 from ..models.news import News
 
 
