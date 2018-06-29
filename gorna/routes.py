@@ -27,18 +27,23 @@ def includeme(config):
     config.add_route('view_page', '/{pagename}', factory=page_factory)
     config.add_route('add_page', '/add_page/{pagename}', factory=new_page_factory)
     config.add_route('edit_page', '/{pagename}/edit_page', factory=page_factory)
+# ----------------------------------------------------------------------
+
+    config.add_route('update_rating', '/_rating/_update/{sig1}')
+    config.add_route('updatepost_rating', '/_rating/_updatepost/{sig1}')
+
+
+
+    config.add_route('view_post_man', '/post_man/view')
+    config.add_route('edit_post_man', '/post_man/edit')
+    config.add_route('restore_post_man', '/post_man/restore')
+    config.add_route('delete_post_man', '/post_man/delete')
 
 
 
 
 
-    config.add_route('_rating', '/_rating/_update')
-
-
-
-
-
-
+# ------------------------------------------------------------------------
 
     '''begin'''
     config.add_route('news_list', '/post1/list')
