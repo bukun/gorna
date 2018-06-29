@@ -17,7 +17,7 @@ Getting Started
 
 ::
 
-    python3 -m venv venv_gorna
+    python3 -m venv vpy_gorna
     source ~/vpy_gorna/bin/activate
 
 - Upgrade packaging tools.

@@ -21,7 +21,7 @@ def login(request):
     if 'form.submitted' in request.params:
         login = request.params['login']
         password = request.params['password']
-        user = request.dbsession.query(User).filter_by(name=login).first()
+        user = request.dbsession.query(User).filter_by(user_name=login).first()
         if user is not None and user.check_password(password):
             headers = remember(request, user.id)
             return HTTPFound(location=next_url, headers=headers)

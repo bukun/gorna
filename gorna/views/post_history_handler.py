@@ -8,15 +8,36 @@ from ..models.mymodel import MyModel
 
 import os
 
-
-@view_config(route_name='view_post_man')
-def view_post_man(request):
-    return ''
-
-
-
-@view_config(route_name='updatepost_rating')
-def updatepost_rating(request):
-    return ''
+@view_defaults(route_name='view_post_man')
+class PostHist(object):
+    def __init__(self, request):
+        self.request = request
 
 
+    @view_config(renderer='../templates/post_hist/view.jinja2')
+    def view(self):
+
+        return
+
+@view_defaults(route_name='edit_post_man')
+class PostHist(object):
+    def __init__(self, request):
+        self.request = request
+
+
+    @view_config(renderer='../templates/post_hist/edit.jinja2')
+    def to_edit(self):
+
+        return
+
+
+@view_defaults(route_name='restore_post_man')
+class PostHist(object):
+    def __init__(self, request):
+        self.request = request
+
+
+    @view_config()
+    def restore(self):
+
+        return

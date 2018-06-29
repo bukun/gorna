@@ -45,24 +45,24 @@ def main(argv=sys.argv):
     with transaction.manager:
         dbsession = get_tm_session(session_factory, transaction.manager)
 
-        editor = User(name='editor', role='editor')
+        editor = User(user_name='editor', role='editor')
         editor.set_password('editor')
         dbsession.add(editor)
 
-        basic = User(name='basic', role='basic')
+        basic = User(user_name='basic', role='basic')
         basic.set_password('basic')
         dbsession.add(basic)
 
         page = Page(
-            name='FrontPage',
-            creator=editor,
-            data='This is the front page',
+            title='FrontPage',
+            user_name=editor,
+            cnt_md='This is the front page',
         )
         dbsession.add(page)
 
         news = Post(
             title='title',
-            content='content',
+            cnt_md='content',
             time_create='',
             time_update='',
         )
