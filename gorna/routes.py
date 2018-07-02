@@ -63,6 +63,10 @@ def includeme(config):
     config.add_route('admin', '/admin/')
 
 
+    config.add_route('entity_add', '/entity/_add')
+    config.add_route('entity_list', '/entity/list')
+
+
 
 
 

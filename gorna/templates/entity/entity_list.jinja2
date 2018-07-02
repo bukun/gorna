@@ -1,0 +1,47 @@
+{% block content %}
+
+    <table>
+        <thead>
+        <tr>
+            <td>UID</td>
+            <td>PATH</td>
+            <td>DESC</td>
+            <td>TIME</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for rec in recs %}
+            <tr>
+                <td contentEditable="true">{{ rec.uid }}</td>
+                <td contentEditable="true">{{ rec.path }}</td>
+                <td>{{ rec.desc }}</td>
+                <td>{{ rec.time_create }}</td>
+                <td hidden="true">{{ rec.uid }}</td>
+                <td>
+                    <button id="updateBtn">修改</button>
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $(document).on('click', '#updateBtn', function () {
+            var title = $(this).parents("tr").find("td").eq(0).text();
+            var content = $(this).parents("tr").find("td").eq(1).text();
+            var uid = $(this).parents("tr").find("td").eq(4).text();
+            jQuery.ajax({
+                type: 'POST',
+                url: 'http://0.0.0.0:5543/entity/update', // the pyramid server
+                data: JSON.stringify({
+                    "title": title,
+                    "content": content,
+                    "uid": uid
+                }),
+                contentType: 'application/json; charset=utf-8'
+            });
+        })
+    </script>
+{% endblock content %}

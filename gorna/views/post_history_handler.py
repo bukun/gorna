@@ -14,7 +14,7 @@ class PostHist(object):
     def __init__(self, request):
         self.request = request
 
-    @view_config(renderer='../templates/post_hist/view.jinja2')
+    @view_config(renderer='../templates/post_hist/post_man_view.jinja2')
     def view(self):
         return
 
@@ -24,7 +24,7 @@ class PostHist(object):
     def __init__(self, request):
         self.request = request
 
-    @view_config(renderer='../templates/post_hist/edit.jinja2')
+    @view_config(renderer='../templates/post_hist/post_man_edit.jinja2')
     def to_edit(self):
         return
 
