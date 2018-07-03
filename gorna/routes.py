@@ -64,7 +64,9 @@ def includeme(config):
 
 
     config.add_route('entity_add', '/entity/_add')
+    config.add_route('entity_add1', '/entity/add')
     config.add_route('entity_list', '/entity/list')
+
 
 
 
