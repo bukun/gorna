@@ -66,6 +66,25 @@ def includeme(config):
     config.add_route('entity_add', '/entity/_add')
     config.add_route('entity_add1', '/entity/add')
     config.add_route('entity_list', '/entity/list')
+    config.add_route('entity_down', '/entity/down/{sig1}')
+    config.add_route('entity_view', '/entity/view/{sig1}')
+
+    config.add_route('entity_download', '/entity_download/list')
+    config.add_route('entity_user_download', '/entity_download/{sig0}/{sig1}')
+
+
+
+    config.add_route('label_remove', '/label/remove/sig{1}')
+    config.add_route('label_list', '/label/list')
+
+
+
+    config.add_route('category_j_subcat', '/category/j_subcat/{sig1}')
+    config.add_route('category_j_kindcat', '/category/j_kindcat/{sig1}')
+    config.add_route('category_j_list_catalog', '/category/j_list_catalog/{sig1}')
+    config.add_route('category_list', '/category/list/{sig1}')
+
+
 
 
 

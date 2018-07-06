@@ -1,0 +1,27 @@
+{% block content %}
+
+    <table>
+        <thead>
+        <tr>
+            <td>UID</td>
+            <td>PATH</td>
+            <td>DESC</td>
+            <td>TIME</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for rec in recs %}
+            <tr>
+                <td contentEditable="true">{{ rec.uid }}</td>
+                <td contentEditable="true">{{ rec.path }}</td>
+                <td>{{ rec.desc }}</td>
+                <td>{{ rec.time_create }}</td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock content %}
