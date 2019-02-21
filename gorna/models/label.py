@@ -20,10 +20,3 @@ class Label(Base):
     tmpl = Column(Integer, nullable=False,default='9')
 
 
-class MPost2Label(Base):
-    '''
-    For post 2 label
-    '''
-
-    def __init__(self):
-        super(MPost2Label, self).__init__()

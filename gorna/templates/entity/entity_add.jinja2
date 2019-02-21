@@ -1,16 +1,42 @@
+{% extends '../layout.jinja2' %}
 {% block content %}
-{{ add_url }}
-<form action="{{ add_url }}" method="post">
-<div class="form-group">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                上传
+            </div>
+            <div class="panel-body">
+                <form action="/entity/add" method="post" class="form-horizontal">
+                    <div class="form-group">
 
-    PATH：    <input  id="path" name="path" type="text">
+                        <label class="col-sm-2 control-label">PATH：</label>
 
-    DESC：     <textarea name="desc" rows="10" cols="80"></textarea>
+                        <div class="col-sm-10">
+                            <input name="path" type="file" accept=".jpg,.jpeg,.gif,.png,.tif,.bmp">
 
-</div>
-<div class="form-group">
-    <button type="submit" name="form.submitted" value="Add" class="btn btn-default">Save</button>
-</div>
-</form>
+                        </div>
 
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"> DESC：</label>
+
+                        <div class="col-sm-10">
+                            <textarea name="desc" rows="10" cols="80" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+
+                        <div class="col-sm-10">
+                            <button type="submit" name="form.submitted" value="Add" class="btn btn-default">Save
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
 {% endblock content %}

@@ -1,27 +1,28 @@
+{% extends '../layout.jinja2' %}
 {% block content %}
-
-    <table>
-        <thead>
-        <tr>
-            <td>UID</td>
-            <td>PATH</td>
-            <td>DESC</td>
-            <td>TIME</td>
-        </tr>
-        </thead>
-        <tbody>
-
-        {% for rec in recs %}
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
             <tr>
-                <td contentEditable="true">{{ rec.uid }}</td>
-                <td contentEditable="true">{{ rec.path }}</td>
-                <td>{{ rec.desc }}</td>
-                <td>{{ rec.time_create }}</td>
-
+                <td>UID</td>
+                <td>PATH</td>
+                <td>DESC</td>
+                <td>TIME</td>
             </tr>
-        {% endfor %}
+            </thead>
+            <tbody>
 
-        </tbody>
-    </table>
+            {% for rec in recs %}
+                <tr>
+                    <td>{{ rec.uid }}</td>
+                    <td>{{ rec.path }}</td>
+                    <td>{{ rec.desc }}</td>
+                    <td>{{ rec.time_create }}</td>
 
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
 {% endblock content %}
