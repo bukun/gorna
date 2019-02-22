@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <div class="container">
+    <div class="row">
 
         {% for all_file in all_files %}
 
@@ -11,9 +11,9 @@
                 <div class="alert alert-info"><a href="#" class="brand">{{ all_file[0] }}</a></div>
             </div>
 
-            <ul class="row">
+            <ul class="container">
                 {% for xlsx in all_file[1] %}
-                    <li class="span4 list-group-item" style="list-style: none">
+                    <li class="col-sm-4 list-group-item" style="list-style: none">
 
 
                         <h3>
