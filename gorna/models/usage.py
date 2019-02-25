@@ -9,7 +9,7 @@ from .meta import Base
 
 
 class Usage(Base):
-    """ The SQLAlchemy declarative model class for a News object. """
+    """ The SQLAlchemy declarative model class for Usage object. """
     __tablename__ = 'TabUsage'
     uid = Column(CHAR, primary_key=True, nullable=False)
     post_id = Column(CHAR, nullable=False)
@@ -17,4 +17,4 @@ class Usage(Base):
     count = Column(Integer)
     tag_id = Column(CHAR, nullable=False)
     kind = Column(CHAR, nullable=False)
-    timestamp = Column(Integer, nullable=False)
+    timestamp = Column(Integer)

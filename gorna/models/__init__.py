@@ -9,11 +9,12 @@ import zope.sqlalchemy
 from .page import Page
 from .user import User
 from .post import Post
-from .label import Label
+from .category import Category
 from .link import Link
 from .post_hist import PostHist
 from .page_hist import PageHist
 from .entity import Entity
+from .entity2user import Entity2User
 from .post2tag import Post2Tag
 from .reply import Reply
 from .user2reply import User2Reply
@@ -23,6 +24,7 @@ from .rating import Rating
 from .usage import Usage
 from .rel import Rel
 from .entity2user import Entity2User
+from .log import Log
 
 
 # run configure_mappers after defining all of the models to ensure

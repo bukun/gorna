@@ -10,7 +10,7 @@ from .meta import Base
 
 
 class Rating(Base):
-    """ The SQLAlchemy declarative model class for a News object. """
+    """ The SQLAlchemy declarative model class for Rating object. """
     __tablename__ = 'TabRating'
     uid = Column(CHAR, primary_key=True, nullable=False)
     post_id = Column(CHAR, nullable=False)

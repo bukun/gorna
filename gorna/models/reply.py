@@ -10,7 +10,7 @@ from .meta import Base
 
 
 class Reply(Base):
-    """ The SQLAlchemy declarative model class for a Post object. """
+    """ The SQLAlchemy declarative model class for Reply object. """
     __tablename__ = 'TabReply'
     uid = Column(CHAR, primary_key=True, nullable=False)
     post_id = Column(CHAR, nullable=False)

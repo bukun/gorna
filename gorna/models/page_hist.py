@@ -9,7 +9,7 @@ from .meta import Base
 
 
 class PageHist(Base):
-    """ The SQLAlchemy declarative model class for a Post object. """
+    """ The SQLAlchemy declarative model class for  PageHist object. """
     __tablename__ = 'TabWikiHist'
     uid = Column(CHAR, primary_key=True, nullable=False)
     title = Column(CHAR, nullable=False)

@@ -10,13 +10,13 @@ from .meta import Base
 
 
 class User(Base):
-    """ The SQLAlchemy declarative model class for a User object. """
+    """ The SQLAlchemy declarative model class for  User object. """
     __tablename__ = 'TabMember'
     uid = Column(CHAR, primary_key=True, nullable=False, unique=True)
     user_name = Column(CHAR, nullable=False, unique=True)
     user_email = Column(CHAR, nullable=False, unique=True)
     user_pass = Column(CHAR, nullable=False)
-    role = Column(CHAR, nullable=False)
+    role = Column(CHAR, nullable=False,default='1000')
     time_reset_passwd = Column(Integer, nullable=False, default=0)
     time_login = Column(Integer, nullable=False, default=0)
     time_create = Column(Integer, nullable=False, default=0)

@@ -9,7 +9,7 @@ from .meta import Base
 
 
 class Entity(Base):
-    """ The SQLAlchemy declarative model class for a Post object. """
+    """ The SQLAlchemy declarative model class for  Entity object. """
     __tablename__ = 'TabEntity'
     uid = Column(VARCHAR, primary_key=True, nullable=False)
     path = Column(CHAR, nullable=False, unique=True)

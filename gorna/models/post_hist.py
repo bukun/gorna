@@ -9,7 +9,7 @@ from .meta import Base
 
 
 class PostHist(Base):
-    """ The SQLAlchemy declarative model class for a Post object. """
+    """ The SQLAlchemy declarative model class for  PostHist object. """
     __tablename__ = 'TabPostHist'
     uid = Column(CHAR, primary_key=True, nullable=False)
     title = Column(CHAR, nullable=False)

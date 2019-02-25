@@ -9,7 +9,7 @@ from .meta import Base
 
 
 class Post2Tag(Base):
-    """ The SQLAlchemy declarative model class for a News object. """
+    """ The SQLAlchemy declarative model class for  News object. """
     __tablename__ = 'TabPost2Tag'
     uid = Column(CHAR, primary_key=True, nullable=False)
     par_id = Column(CHAR, nullable=False)

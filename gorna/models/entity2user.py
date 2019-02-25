@@ -9,7 +9,7 @@ from .meta import Base
 
 
 class Entity2User(Base):
-    """ The SQLAlchemy declarative model class for a News object. """
+    """ The SQLAlchemy declarative model class for  Entity2User object. """
     __tablename__ = 'TabEntity2User'
     uid = Column(CHAR, primary_key=True, nullable=False)
     entity_id = Column(CHAR, nullable=False)
