@@ -18,8 +18,7 @@ from ..models import (
 # from ..models import
 
 from ..models import Category, Link, Post, Page, PostHist, PageHist, User, Entity, Post2Tag, Reply, user2reply, Collect, \
-    Evaluation, Rating, Usage, Rel, Entity2User
-
+    Evaluation, Rating, Usage, Rel, Entity2User, Log
 
 
 def usage(argv):
